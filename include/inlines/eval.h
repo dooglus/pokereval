@@ -94,7 +94,7 @@ StdDeck_StdRules_EVAL_N( StdDeck_CardMask cards, int n_cards )
   if (n_ranks >= 5) {
     if (nBitsTable[SS] >= 5) {
       if (straightTable[SS]) 
-        return HandVal_HANDTYPE_VALUE(StdRules_HandType_STFLUSH)
+        return HandVal_HANDTYPE_VALUE(SS == 0b1111100000000 ? StdRules_HandType_RFLUSH : StdRules_HandType_STFLUSH)
           + HandVal_TOP_CARD_VALUE(straightTable[SS]);
       else
         retval = HandVal_HANDTYPE_VALUE(StdRules_HandType_FLUSH) 
@@ -102,7 +102,7 @@ StdDeck_StdRules_EVAL_N( StdDeck_CardMask cards, int n_cards )
     } 
     else if (nBitsTable[SC] >= 5) {
       if (straightTable[SC]) 
-        return HandVal_HANDTYPE_VALUE(StdRules_HandType_STFLUSH)
+        return HandVal_HANDTYPE_VALUE(SC == 0b1111100000000 ? StdRules_HandType_RFLUSH : StdRules_HandType_STFLUSH)
           + HandVal_TOP_CARD_VALUE(straightTable[SC]);
       else 
         retval = HandVal_HANDTYPE_VALUE(StdRules_HandType_FLUSH) 
@@ -110,7 +110,7 @@ StdDeck_StdRules_EVAL_N( StdDeck_CardMask cards, int n_cards )
     } 
     else if (nBitsTable[SD] >= 5) {
       if (straightTable[SD]) 
-        return HandVal_HANDTYPE_VALUE(StdRules_HandType_STFLUSH)
+        return HandVal_HANDTYPE_VALUE(SD == 0b1111100000000 ? StdRules_HandType_RFLUSH : StdRules_HandType_STFLUSH)
           + HandVal_TOP_CARD_VALUE(straightTable[SD]);
       else 
         retval = HandVal_HANDTYPE_VALUE(StdRules_HandType_FLUSH) 
@@ -118,7 +118,7 @@ StdDeck_StdRules_EVAL_N( StdDeck_CardMask cards, int n_cards )
     } 
     else if (nBitsTable[SH] >= 5) {
       if (straightTable[SH]) 
-        return HandVal_HANDTYPE_VALUE(StdRules_HandType_STFLUSH)
+        return HandVal_HANDTYPE_VALUE(SH == 0b1111100000000 ? StdRules_HandType_RFLUSH : StdRules_HandType_STFLUSH)
           + HandVal_TOP_CARD_VALUE(straightTable[SH]);
       else 
         retval = HandVal_HANDTYPE_VALUE(StdRules_HandType_FLUSH) 
@@ -161,6 +161,11 @@ StdDeck_StdRules_EVAL_N( StdDeck_CardMask cards, int n_cards )
       uint32 t, kickers;
 
       two_mask   = ranks ^ (SC ^ SD ^ SH ^ SS);
+
+      //               AKQJT98765432
+      if (two_mask < 0b0001000000000)
+	return HandVal_HANDTYPE_VALUE(StdRules_HandType_NOPAIR)
+	  + topFiveCardsTable[ranks];
 
       retval = HandVal_HANDTYPE_VALUE(StdRules_HandType_ONEPAIR)
         + HandVal_TOP_CARD_VALUE(topCardTable[two_mask]);
