@@ -3,13 +3,19 @@
 import sys, string, posix, random, os.path, json
 from BitcoinVideoCasino import BitcoinVideoCasino
 
-referral_code = '2850842937'
+# account_key = '2a12029392838293aaaaa77a7373737a'
 account_key = None
 
+# 1 through 5
 credits_per_game = 1
-credit_btc_value = 100000 # 0.001 BTC
-credits_bet = 0
-credits_won = 0
+
+# The size of 1 credit in this game, in Satoshis.
+# This value can be 100000 (0.001 BTC), 500000 (0.005 BTC), or 1000000 (0.01 BTC).
+credit_btc_value = 100000
+
+########################################################################
+# end of user-configable variables
+########################################################################
 
 hand_names = ['Nothing',
               'One Pair (Jacks or Better)',
@@ -22,8 +28,9 @@ hand_names = ['Nothing',
               'Straight Flush',
               'Royal Flush']
 
-def dump(j):
-    print json.dumps(j, sort_keys = True, indent=4)
+credits_bet = credits_won = 0
+
+referral_code = '2850842937'
 
 bvc = BitcoinVideoCasino(referral_code, account_key)
 
