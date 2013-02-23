@@ -38,9 +38,10 @@
 #define StdRules_HandType_FULLHOUSE 6
 #define StdRules_HandType_QUADS     7
 #define StdRules_HandType_STFLUSH   8
+#define StdRules_HandType_RFLUSH    9
 #define StdRules_HandType_FIRST     StdRules_HandType_NOPAIR
-#define StdRules_HandType_LAST      StdRules_HandType_STFLUSH
-#define StdRules_HandType_COUNT     9
+#define StdRules_HandType_LAST      StdRules_HandType_RFLUSH
+#define StdRules_HandType_COUNT     10
 
 #define StdRules_FIVE_STRAIGHT \
  ((1 << StdDeck_Rank_ACE ) \
@@ -74,6 +75,7 @@ extern POKEREVAL_EXPORT int StdRules_HandVal_print(HandVal handval);
 #define HandType_FULLHOUSE StdRules_HandType_FULLHOUSE 
 #define HandType_QUADS     StdRules_HandType_QUADS     
 #define HandType_STFLUSH   StdRules_HandType_STFLUSH    
+#define HandType_RFLUSH    StdRules_HandType_RFLUSH    
 #define HandType_FIRST     StdRules_HandType_FIRST  
 #define HandType_COUNT     StdRules_HandType_COUNT     
 #define HandType_LAST      StdRules_HandType_LAST

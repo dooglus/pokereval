@@ -61,7 +61,10 @@ StdDeck_StdRules_EVAL_TYPE( StdDeck_CardMask cards, int n_cards )
 
     if (t & 0x01) {
       if (t & 0x02) 
-        return StdRules_HandType_STFLUSH;
+        if (ranks == 0b1111100000000)
+          return StdRules_HandType_RFLUSH;
+        else
+          return StdRules_HandType_STFLUSH;
       else 
         is_st_or_fl = StdRules_HandType_FLUSH;
     };
@@ -76,6 +79,10 @@ StdDeck_StdRules_EVAL_TYPE( StdDeck_CardMask cards, int n_cards )
     break;
 
   case 1:
+    two_mask = ranks ^ (sc ^ sd ^ sh ^ ss);
+    //               AKQJT98765432
+    if (two_mask < 0b0001000000000)
+      return StdRules_HandType_NOPAIR;
     return StdRules_HandType_ONEPAIR;
     break;
 

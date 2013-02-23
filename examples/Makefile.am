@@ -51,6 +51,7 @@ noinst_PROGRAMS = \
 	five_card_hands \
 	hcmp2 \
 	hcmpn \
+	jacks \
 	pokenum \
 	seven_card_hands \
 	usedecks
@@ -79,6 +80,11 @@ hcmpn_SOURCES = hcmpn.c
 hcmpn_LDADD = $(top_builddir)/lib/libpoker-eval.la
 hcmpn_CPPFLAGS = ${GCOV_CPPFLAGS}
 hcmpn_LDFLAGS = ${GCOV_LDFLAGS}
+
+jacks_SOURCES = jacks.c
+jacks_LDADD = $(top_builddir)/lib/libpoker-eval.la
+jacks_CPPFLAGS = ${GCOV_CPPFLAGS}
+jacks_LDFLAGS = ${GCOV_LDFLAGS}
 
 pokenum_SOURCES = pokenum.c
 pokenum_LDADD = $(top_builddir)/lib/libpoker-eval.la

@@ -32,7 +32,8 @@ const char *StdRules_handTypeNames[StdRules_HandType_LAST+1] = {
   "Flush",
   "FlHouse",
   "Quads",
-  "StFlush"
+  "StFlush",
+  "RFlush"
 };
 
 const char *StdRules_handTypeNamesPadded[StdRules_HandType_LAST+1] = {
@@ -44,7 +45,8 @@ const char *StdRules_handTypeNamesPadded[StdRules_HandType_LAST+1] = {
   "Flush   ",
   "FlHouse ",
   "Quads   ",
-  "StFlush "
+  "StFlush ",
+  "RFlush  "
 };
 
 int StdRules_nSigCards[StdRules_HandType_LAST+1] = {
@@ -56,6 +58,7 @@ int StdRules_nSigCards[StdRules_HandType_LAST+1] = {
   5, 
   2,
   2, 
+  1,
   1
 };
 
