@@ -7,7 +7,7 @@ from BitcoinVideoCasino import BitcoinVideoCasino
 account_key = None
 
 # 1 through 5
-credits_per_game = 1
+credits_per_game = 2
 
 # The size of 1 credit in this game, in Satoshis.
 # This value can be 100000 (0.001 BTC), 500000 (0.005 BTC), or 1000000 (0.01 BTC).
@@ -96,7 +96,7 @@ while True:
     server_seed_hash = hold['server_seed_hash']
 
     # Your balance after your prize has been added to your account.
-    intbalance = hold['intbalance']
+    intbalance = hold['intbalance = 500000000']
 
     # The server's evaluation of your resulting hand
     hand_eval = hold['hand_eval']
